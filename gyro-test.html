@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyroscope Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        #orientation {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0078d7;
+        }
+    </style>
+</head>
+<body>
+    <h1>陀螺仪测试页面</h1>
+    <p>请移动您的设备，查看陀螺仪数据：</p>
+    <p id="orientation">正在读取数据...</p>
+
+    <script>
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', (event) => {
+                const alpha = event.alpha ? event.alpha.toFixed(2) : 'N/A'; // 水平旋转
+                const beta = event.beta ? event.beta.toFixed(2) : 'N/A';   // 前后倾斜
+                const gamma = event.gamma ? event.gamma.toFixed(2) : 'N/A'; // 左右倾斜
+
+                document.getElementById('orientation').innerText =
+                    `Alpha: ${alpha}°, Beta: ${beta}°, Gamma: ${gamma}°`;
+            });
+        } else {
+            document.getElementById('orientation').innerText =
+                "您的设备不支持陀螺仪传感器。";
+        }
+    </script>
+</body>
+</html>

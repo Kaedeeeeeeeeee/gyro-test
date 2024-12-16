@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Immersive Google Earth",
+    "version": "1.0",
+    "description": "让谷歌地球街景视角随设备方向变化",
+    "permissions": ["activeTab", "geolocation", "scripting"],
+    "host_permissions": ["https://*.google.com/*"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+    }
+  }
